@@ -1,22 +1,21 @@
 package org.a21martinqr.client;
 
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 
 public class MongoDBCollection {
 
-    MongoDBCollection mongoClient = new MongoDBCollection("localhost", 27017);
-    MongoDatabase database = mongoClient.getDatabase("LoBeis");
+    private static MongoClient mongoClient;
+    private static MongoDatabase mongoDatabase;
+    private static String connectionString = "mongodb://localhost:27017/";
 
-    public MongoDBCollection() {
+    public static MongoDatabase getConexion() {
+        if (mongoClient == null) {
+            MongoClientURI uri = new MongoClientURI(connectionString);
+            mongoClient = new MongoClient(uri);
+            mongoDatabase = mongoClient.getDatabase("LoBeis");
+        }
+        return mongoDatabase;
     }
-
-
-    public MongoDBCollection(String localhost, int i) {
-    }
-
-    public MongoDatabase getDatabase(String loBeis) {
-        return database;
-    }
-
-
 }
