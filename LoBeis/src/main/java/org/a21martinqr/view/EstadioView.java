@@ -60,7 +60,7 @@ public class EstadioView {
         }
     }
 
-    private void mostrarTodosLosEstadios() {
+    void mostrarTodosLosEstadios() {
         List<Estadio> estadios = daoEstadio.obtenerTodosLosEstadios();
         System.out.println("Mostrando todos los estadios:");
         for (Estadio estadio : estadios) {

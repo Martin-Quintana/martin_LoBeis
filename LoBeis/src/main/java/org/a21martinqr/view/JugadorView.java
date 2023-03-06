@@ -7,6 +7,7 @@ import org.a21martinqr.model.Equipo;
 import org.a21martinqr.model.Jugador;
 import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
@@ -35,7 +36,12 @@ public class JugadorView {
             System.out.println("2. Agregar un nuevo jugador");
             System.out.println("3. Actualizar un jugador existente");
             System.out.println("4. Eliminar un jugador existente");
-            System.out.println("5. Salir");
+            System.out.println("5. Mostrar Jugadores de una posición");
+            System.out.println("6. Mostrar jugador por nombre");
+            System.out.println("7. Mostrar jugadores por equipo");
+            System.out.println("8. Mostrar jugadores por edad");
+            System.out.println("9. Mostrar jugadores menores de edad");
+            System.out.println("10. Salir");
             String opcion = scanner.nextLine();
             switch (opcion) {
                 case "1":
@@ -51,6 +57,21 @@ public class JugadorView {
                     eliminarJugador();
                     break;
                 case "5":
+                    mostrarJugadoresPorPosicion();
+                    break;
+                case "6":
+                    mostrarJugadorPorNombre();
+                    break;
+                case "7":
+                    mostrarJugadoresPorEquipo();
+                    break;
+                case "8":
+                    mostrarJugadoresPorEdad();
+                    break;
+                case "9":
+                    mostrarJugadoresMenoresEdad();
+                    break;
+                case "10":
                     salir = true;
                     break;
                 default:
@@ -78,8 +99,7 @@ public class JugadorView {
         System.out.println("Ingrese la posición del nuevo jugador:");
         String posicion = scanner.nextLine();
         System.out.println("Ingrese el equipo del nuevo jugador:");
-        Equipo equipo = new Equipo();
-        equipo.setNombre(scanner.nextLine());
+        String equipo = scanner.nextLine();
         Jugador jugador = new Jugador(id, nombre, edad, posicion, equipo);
         jugadorDAO.agregarJugador(jugador);
         System.out.println("Jugador agregado correctamente: " + jugador);
@@ -101,13 +121,13 @@ public class JugadorView {
         System.out.println("Ingrese la nueva posición del jugador:");
         String posicion = scanner.nextLine();
         System.out.println("Ingrese el nuevo equipo del jugador:");
-        Equipo equipo = new Equipo();
-        equipo.setNombre(scanner.nextLine());
+        String equipo = scanner.nextLine();
         Jugador jugadorActualizado = new Jugador(id, nombre, edad, posicion, equipo);
         jugadorActualizado.setId(jugadorExistente.getId());
         jugadorDAO.actualizarJugador(jugadorActualizado);
         System.out.println("Jugador actualizado correctamente: " + jugadorActualizado);
     }
+
     private void eliminarJugador() {
         System.out.println("Ingrese el id del jugador a eliminar:");
         ObjectId id = new ObjectId();
@@ -121,4 +141,75 @@ public class JugadorView {
         System.out.println("Jugador eliminado correctamente: " + jugadorExistente);
     }
 
+    private void mostrarJugadorPorNombre(){
+        System.out.println("Ingrese el nombre del jugador a buscar:");
+        String nombre = scanner.nextLine();
+        Jugador jugadorExistente = jugadorDAO.obtenerJugadorPorNombre(nombre);
+        if (jugadorExistente == null) {
+            System.out.println("No se encontró ningún jugador con el nombre especificado.");
+            return;
+        }
+        System.out.println("Jugador encontrado: " + jugadorExistente);
+    }
+
+    private List<Jugador> mostrarJugadoresPorPosicion(){
+       List<Jugador> jugadores = new ArrayList<>();
+        System.out.println("Ingrese la posición del jugador a buscar:");
+        String posicion = scanner.nextLine();
+        jugadores = jugadorDAO.obtenerJugadoresPorPosicion(posicion);
+        if (jugadores == null) {
+            System.out.println("No se encontró ningún jugador con la posición especificada.");
+            return jugadores;
+        }
+        System.out.println("Jugadores encontrados: " + jugadores);
+        return jugadores;
+    }
+
+    private List<Jugador> mostrarJugadoresPorEdad(){
+        List<Jugador> jugadores = new ArrayList<>();
+        System.out.println("Ingrese la edad del jugador a buscar:");
+        int edad = Integer.parseInt(scanner.nextLine());
+        jugadores = jugadorDAO.obtenerJugadoresPorEdad(edad);
+        if (jugadores == null) {
+            System.out.println("No se encontró ningún jugador con la edad especificada.");
+            return jugadores;
+        }
+        System.out.println("Jugadores encontrados: " + jugadores);
+        return jugadores;
+    }
+
+    private List<Jugador> mostrarJugadoresPorEquipo(){
+        List<Jugador> jugadores = new ArrayList<>();
+        System.out.println("Ingrese el equipo del jugador a buscar:");
+        String equipo = scanner.nextLine();
+        jugadores = jugadorDAO.obtenerJugadoresPorEquipo(equipo);
+        if (jugadores == null) {
+            System.out.println("No se encontró ningún jugador con el equipo especificado.");
+            return jugadores;
+        }
+        System.out.println("Jugadores encontrados: " + jugadores);
+        return jugadores;
+    }
+
+    private List<Jugador> mostrarJugadoresMayorEdad(){
+        List<Jugador> jugadores = new ArrayList<>();
+        jugadores = jugadorDAO.obtenerJugadoresMayoresDeEdad();
+        if (jugadores == null) {
+            System.out.println("No se encontró ningún jugador con la edad especificada.");
+            return jugadores;
+        }
+        System.out.println("Jugadores encontrados: " + jugadores);
+        return jugadores;
+    }
+
+    private List<Jugador> mostrarJugadoresMenoresEdad(){
+        List<Jugador> jugadores = new ArrayList<>();
+        jugadores = jugadorDAO.obtenerJugadoresMenoresDeEdad();
+        if (jugadores == null) {
+            System.out.println("No se encontró ningún jugador con la edad especificada.");
+            return jugadores;
+        }
+        System.out.println("Jugadores encontrados: " + jugadores);
+        return jugadores;
+    }
 }

@@ -10,13 +10,13 @@ public class Jugador {
     private int edad;
 
     private String posicion;
-    private Equipo equipo;
+    private String equipo;
 
 
     public Jugador() {
     }
 
-    public Jugador(ObjectId id, String nombre, int edad, String posicion, Equipo equipo) {
+    public Jugador(ObjectId id, String nombre, int edad, String posicion, String equipo) {
         this.id = new ObjectId();
         this.nombre = nombre;
         this.edad = edad;
@@ -48,11 +48,11 @@ public class Jugador {
         this.edad = edad;
     }
 
-    public Equipo getEquipo() {
+    public String getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(Equipo equipo) {
+    public void setEquipo(String equipo) {
         this.equipo = equipo;
     }
 
@@ -79,7 +79,7 @@ public class Jugador {
         jugador.setNombre(document.getString("nombre"));
         jugador.setEdad(document.getInteger("edad"));
         jugador.setPosicion(document.getString("posicion"));
-        jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+        jugador.setEquipo(document.getString("equipo"));
         return jugador;
     }
 

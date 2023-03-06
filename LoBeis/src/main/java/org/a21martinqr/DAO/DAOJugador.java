@@ -33,7 +33,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
         }
         return jugadores;
@@ -64,7 +64,7 @@ public class DAOJugador {
         jugador.setId(document.getObjectId("_id"));
         jugador.setNombre(document.getString("nombre"));
         jugador.setPosicion(document.getString("posicion"));
-        jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+        jugador.setEquipo(document.getString("equipo"));
         return jugador;
     }
 
@@ -75,7 +75,7 @@ public class DAOJugador {
         jugador.setId(document.getObjectId("_id"));
         jugador.setNombre(document.getString("nombre"));
         jugador.setPosicion(document.getString("posicion"));
-        jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+        jugador.setEquipo(document.getString("equipo"));
         return jugador;
     }
 
@@ -87,7 +87,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
         }
         return jugadores;
@@ -101,7 +101,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
         }
         return jugadores;
@@ -115,7 +115,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
         }
         return jugadores;
@@ -129,7 +129,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
         }
         return jugadores;
@@ -143,7 +143,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
         }
         return jugadores;
@@ -157,7 +157,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
         }
         return jugadores;
