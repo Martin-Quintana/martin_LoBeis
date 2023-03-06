@@ -17,12 +17,13 @@ public class Jugador {
     }
 
     public Jugador(ObjectId id, String nombre, int edad, String posicion, String equipo) {
-        this.id = id;
+        this.id = new ObjectId();
         this.nombre = nombre;
         this.edad = edad;
         this.posicion = posicion;
         this.equipo = equipo;
     }
+
     public ObjectId getId() {
         return id;
     }
