@@ -16,6 +16,9 @@ public class Estadio {
     public Estadio() {
     }
 
+
+
+
     public Estadio(ObjectId id, String nombre, String ciudad, String pais, int capacidad) {
         this.id = id;
         this.nombre = nombre;
@@ -23,6 +26,8 @@ public class Estadio {
         this.pais = pais;
         this.capacidad = capacidad;
     }
+
+
 
     public ObjectId getId() {
         return id;

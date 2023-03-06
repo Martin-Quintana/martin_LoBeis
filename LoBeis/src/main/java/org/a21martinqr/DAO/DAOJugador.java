@@ -2,6 +2,7 @@ package org.a21martinqr.DAO;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.a21martinqr.model.Equipo;
 import org.a21martinqr.model.Jugador;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -25,7 +26,6 @@ public class DAOJugador {
     }
 
 
-
     public List<Jugador> obtenerTodosLosJugadores() {
         List<Jugador> jugadores = new ArrayList<>();
         for (Document document : jugadorCollection.find()) {
@@ -33,7 +33,7 @@ public class DAOJugador {
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
             jugador.setPosicion(document.getString("posicion"));
-            jugador.setEquipo(document.getString("equipo"));
+            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
             jugadores.add(jugador);
         }
         return jugadores;
@@ -64,7 +64,103 @@ public class DAOJugador {
         jugador.setId(document.getObjectId("_id"));
         jugador.setNombre(document.getString("nombre"));
         jugador.setPosicion(document.getString("posicion"));
-        jugador.setEquipo(document.getString("equipo"));
+        jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
         return jugador;
     }
+
+    public Jugador obtenerJugadorPorNombre(String nombre) {
+        Document document = jugadorCollection.find(eq("nombre", nombre)).first();
+        Jugador jugador = new Jugador();
+        assert document != null;
+        jugador.setId(document.getObjectId("_id"));
+        jugador.setNombre(document.getString("nombre"));
+        jugador.setPosicion(document.getString("posicion"));
+        jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+        return jugador;
+    }
+
+    //Listar jugadores por equipo
+    public List<Jugador> obtenerJugadoresPorEquipo(String equipo) {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Document document : jugadorCollection.find(eq("equipo", equipo))) {
+            Jugador jugador = new Jugador();
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
+    //Listar jugadores por posicion
+    public List<Jugador> obtenerJugadoresPorPosicion(String posicion) {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Document document : jugadorCollection.find(eq("posicion", posicion))) {
+            Jugador jugador = new Jugador();
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
+    //Listar jugadores por edad
+    public List<Jugador> obtenerJugadoresPorEdad(int edad) {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Document document : jugadorCollection.find(eq("edad", edad))) {
+            Jugador jugador = new Jugador();
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
+    //Listar jugadores mayores de edad (18)
+    public List<Jugador> obtenerJugadoresMayoresDeEdad() {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Document document : jugadorCollection.find(eq("edad", 18))) {
+            Jugador jugador = new Jugador();
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
+    //Listar jugadores menores de edad (18)
+    public List<Jugador> obtenerJugadoresMenoresDeEdad() {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Document document : jugadorCollection.find(eq("edad", 17))) {
+            Jugador jugador = new Jugador();
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
+    //Listar jugadores que su nombre empieza con una letra
+    public List<Jugador> obtenerJugadoresPorLetra(String letra) {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Document document : jugadorCollection.find(eq("nombre", letra))) {
+            Jugador jugador = new Jugador();
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(Equipo.fromDocument(document.get("equipo", Document.class)));
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
 }

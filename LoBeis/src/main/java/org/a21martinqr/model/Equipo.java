@@ -10,12 +10,12 @@ public class Equipo {
     private String ciudad;
     private String pais;
     private int fundacion;
-    private String estadio;
+    private Estadio estadio;
 
     public Equipo() {
     }
 
-    public Equipo(ObjectId id, String nombre, String ciudad, String pais, int fundacion, String estadio) {
+    public Equipo(ObjectId id, String nombre, String ciudad, String pais, int fundacion, Estadio estadio) {
         this.id = id;
         this.nombre = nombre;
         this.ciudad = ciudad;
@@ -64,11 +64,11 @@ public class Equipo {
         this.fundacion = fundacion;
     }
 
-    public String getEstadio() {
+    public Estadio getEstadio() {
         return estadio;
     }
 
-    public void setEstadio(String estadio) {
+    public void setEstadio(Estadio estadio) {
         this.estadio = estadio;
     }
 
@@ -89,7 +89,7 @@ public class Equipo {
         equipo.setCiudad(document.getString("ciudad"));
         equipo.setPais(document.getString("pais"));
         equipo.setFundacion(document.getInteger("fundacion"));
-        equipo.setEstadio(document.getString("estadio"));
+        equipo.setEstadio(document.get("estadio", Estadio.class));
         return equipo;
     }
 

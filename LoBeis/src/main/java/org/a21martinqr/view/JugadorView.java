@@ -3,6 +3,7 @@ package org.a21martinqr.view;
 import com.mongodb.client.MongoCollection;
 import org.a21martinqr.DAO.DAOJugador;
 import org.a21martinqr.client.MongoDBCollection;
+import org.a21martinqr.model.Equipo;
 import org.a21martinqr.model.Jugador;
 import org.bson.types.ObjectId;
 
@@ -77,7 +78,8 @@ public class JugadorView {
         System.out.println("Ingrese la posición del nuevo jugador:");
         String posicion = scanner.nextLine();
         System.out.println("Ingrese el equipo del nuevo jugador:");
-        String equipo = scanner.nextLine();
+        Equipo equipo = new Equipo();
+        equipo.setNombre(scanner.nextLine());
         Jugador jugador = new Jugador(id, nombre, edad, posicion, equipo);
         jugadorDAO.agregarJugador(jugador);
         System.out.println("Jugador agregado correctamente: " + jugador);
@@ -99,7 +101,8 @@ public class JugadorView {
         System.out.println("Ingrese la nueva posición del jugador:");
         String posicion = scanner.nextLine();
         System.out.println("Ingrese el nuevo equipo del jugador:");
-        String equipo = scanner.nextLine();
+        Equipo equipo = new Equipo();
+        equipo.setNombre(scanner.nextLine());
         Jugador jugadorActualizado = new Jugador(id, nombre, edad, posicion, equipo);
         jugadorActualizado.setId(jugadorExistente.getId());
         jugadorDAO.actualizarJugador(jugadorActualizado);
