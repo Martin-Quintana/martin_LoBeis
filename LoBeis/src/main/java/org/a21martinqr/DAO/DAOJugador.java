@@ -1,15 +1,23 @@
 package org.a21martinqr.DAO;
 
+import com.mongodb.Block;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Accumulators;
+import com.mongodb.client.model.Aggregates;
 import org.a21martinqr.model.Equipo;
 import org.a21martinqr.model.Jugador;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static com.mongodb.client.model.Accumulators.sum;
+import static com.mongodb.client.model.Aggregates.group;
+import static com.mongodb.client.model.Aggregates.match;
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 
 public class DAOJugador {
@@ -162,5 +170,37 @@ public class DAOJugador {
         }
         return jugadores;
     }
+
+    //Obtener jugadores por equipo y posicion
+    public List<Jugador> obtenerJugadoresPorEquipoYPosicion(String equipo, String posicion) {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (Document document : jugadorCollection.find(and(eq("equipo", equipo), eq("posicion", posicion)))) {
+            Jugador jugador = new Jugador();
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(document.getString("equipo"));
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
+    //Obtener jugadores por equipo y edad
+    public List<Jugador> agruparJugadoresPorPosicion(String posicion) {
+        List<Jugador> jugadores = new ArrayList<>();
+        jugadorCollection.aggregate(Arrays.asList(
+                Aggregates.match(eq("posicion", posicion)),
+                Aggregates.group("$posicion")
+        )).forEach((Block<Document>) document -> {
+            Jugador jugador = new Jugador();
+            jugador.setPosicion(document.getString("_id"));
+            jugadores.add(jugador);
+        });
+
+        return jugadores;
+    }
+
+    
+
 
 }
