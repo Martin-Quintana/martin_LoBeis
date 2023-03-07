@@ -76,7 +76,7 @@ public class DAOEstadio {
         return estadio;
     }
 
-    public Estadio obtenerEstadioPorCiudad(String ciudad) {
+    public Estadio agruparEstadioPorCiudad(String ciudad) {
         Document document = estadioCollection.find(new Document("ciudad", ciudad)).first();
         Estadio estadio = new Estadio();
         estadio.setId(document.getObjectId("_id"));

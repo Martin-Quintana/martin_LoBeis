@@ -35,7 +35,8 @@ public class EstadioView {
             System.out.println("2. Agregar un nuevo estadio");
             System.out.println("3. Actualizar un estadio existente");
             System.out.println("4. Eliminar un estadio existente");
-            System.out.println("5. Salir");
+            System.out.println("5. Agrupar estadios por ciudad");
+            System.out.println("6. Salir");
             String opcion = scanner.nextLine();
             switch (opcion) {
                 case "1":
@@ -51,6 +52,9 @@ public class EstadioView {
                     eliminarEstadio();
                     break;
                 case "5":
+                    mostrarEstadioPorCiudad();
+                    break;
+                case "6":
                     salir = true;
                     break;
                 default:
@@ -116,6 +120,23 @@ public class EstadioView {
             System.out.println("No se encontró el estadio con el id especificado.");
         }
     }
+
+
+    //todo list estadios por ciudad
+    private void mostrarEstadioPorCiudad() {
+        System.out.println("Ingrese la ciudad del estadio:");
+        String ciudad = scanner.nextLine();
+        Estadio estadioExistente = daoEstadio.agruparEstadioPorCiudad(ciudad);
+        if (estadioExistente != null) {
+            daoEstadio.agruparEstadioPorCiudad(String.valueOf(estadioExistente));
+            System.out.println("Estadio encontrado con éxito.");
+            System.out.println(estadioExistente);
+        } else {
+            System.out.println("No se encontró el estadio con la ciudad especificada.");
+        }
+    }
+
+
 
 
 
