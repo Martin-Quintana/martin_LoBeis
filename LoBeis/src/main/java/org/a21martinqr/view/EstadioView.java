@@ -74,9 +74,9 @@ public class EstadioView {
         System.out.println("Ingrese el nombre del estadio:");
         String nombre = scanner.nextLine();
         System.out.println("Ingrese la ciudad del estadio:");
-        String ciudad = scanner.nextLine();
+        String ciudad = scanner.next();
         System.out.println("Ingrese la capacidad del estadio:");
-        int capacidad = Integer.parseInt(scanner.nextLine());
+        int capacidad = scanner.nextInt();
         System.out.println("Ingrese el pais del estadio:");
         String pais = scanner.nextLine();
 

@@ -81,7 +81,7 @@ public class EquipoView {
         System.out.println("Ingrese el nombre del país del equipo:");
         String pais = scanner.nextLine();
         System.out.println("Ingrese la fundación del equipo:");
-        int fundacion = Integer.parseInt(scanner.nextLine());
+        int fundacion = scanner.nextInt();
         System.out.println("Ingrese el nombre del estadio del equipo:");
         String nombreEstadio = scanner.nextLine();
 
@@ -101,7 +101,7 @@ public class EquipoView {
         System.out.println("Ingrese el nombre del país del equipo:");
         String pais = scanner.nextLine();
         System.out.println("Ingrese la fundación del equipo:");
-        int fundacion = Integer.parseInt(scanner.nextLine());
+        int fundacion = scanner.nextInt();
         System.out.println("Ingrese el nombre del estadio del equipo:");
         String estadio = scanner.nextLine();
 

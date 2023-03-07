@@ -101,13 +101,15 @@ public class JugadorView {
         ObjectId id = new ObjectId();
 
         System.out.println("Ingrese el nombre del nuevo jugador:");
-        String nombre = scanner.nextLine();
+        String nombre = scanner.next();
         System.out.println("Ingrese su edad");
-        int edad = Integer.parseInt(scanner.nextLine());
+        int edad = scanner.nextInt();
+
         System.out.println("Ingrese la posición del nuevo jugador:");
-        String posicion = scanner.nextLine();
+        String posicion = scanner.next();
+
         System.out.println("Ingrese el equipo del nuevo jugador:");
-        String equipo = scanner.nextLine();
+        String equipo = scanner.next();
         Jugador jugador = new Jugador(id, nombre, edad, posicion, equipo);
         jugadorDAO.agregarJugador(jugador);
         System.out.println("Jugador agregado correctamente: " + jugador);
@@ -125,7 +127,7 @@ public class JugadorView {
         System.out.println("Ingrese el nuevo nombre del jugador:");
         String nombre = scanner.nextLine();
         System.out.println("Ingrese su edad");
-        int edad = Integer.parseInt(scanner.nextLine());
+        int edad = scanner.nextInt();
         System.out.println("Ingrese la nueva posición del jugador:");
         String posicion = scanner.nextLine();
         System.out.println("Ingrese el nuevo equipo del jugador:");
@@ -177,7 +179,7 @@ public class JugadorView {
     private List<Jugador> mostrarJugadoresPorEdad() {
         List<Jugador> jugadores = new ArrayList<>();
         System.out.println("Ingrese la edad del jugador a buscar:");
-        int edad = Integer.parseInt(scanner.nextLine());
+        int edad = scanner.nextInt();
         jugadores = jugadorDAO.obtenerJugadoresPorEdad(edad);
         if (jugadores == null) {
             System.out.println("No se encontró ningún jugador con la edad especificada.");

@@ -40,6 +40,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -49,6 +50,7 @@ public class DAOJugador {
 
     public void agregarJugador(Jugador jugador) {
         Document document = new Document("nombre", jugador.getNombre())
+                .append("edad", jugador.getEdad())
                 .append("posicion", jugador.getPosicion())
                 .append("equipo", jugador.getEquipo());
         jugadorCollection.insertOne(document);
@@ -57,6 +59,7 @@ public class DAOJugador {
 
     public void actualizarJugador(Jugador jugador) {
         jugadorCollection.updateOne(eq("_id", jugador.getId()), new Document("$set", new Document("nombre", jugador.getNombre())
+                .append("edad", jugador.getEdad())
                 .append("posicion", jugador.getPosicion())
                 .append("equipo", jugador.getEquipo())));
     }
@@ -71,6 +74,7 @@ public class DAOJugador {
         assert document != null;
         jugador.setId(document.getObjectId("_id"));
         jugador.setNombre(document.getString("nombre"));
+        jugador.setEdad(document.getInteger("edad"));
         jugador.setPosicion(document.getString("posicion"));
         jugador.setEquipo(document.getString("equipo"));
         return jugador;
@@ -82,6 +86,7 @@ public class DAOJugador {
         assert document != null;
         jugador.setId(document.getObjectId("_id"));
         jugador.setNombre(document.getString("nombre"));
+        jugador.setEdad(document.getInteger("edad"));
         jugador.setPosicion(document.getString("posicion"));
         jugador.setEquipo(document.getString("equipo"));
         return jugador;
@@ -94,6 +99,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -108,6 +114,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -122,6 +129,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -136,6 +144,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -150,6 +159,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -164,6 +174,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -178,6 +189,7 @@ public class DAOJugador {
             Jugador jugador = new Jugador();
             jugador.setId(document.getObjectId("_id"));
             jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
             jugador.setPosicion(document.getString("posicion"));
             jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
@@ -187,20 +199,22 @@ public class DAOJugador {
 
     //Obtener jugadores por equipo y edad
     public List<Jugador> agruparJugadoresPorPosicion(String posicion) {
+        //Buscar todos los jugadores por posicion
         List<Jugador> jugadores = new ArrayList<>();
-        jugadorCollection.aggregate(Arrays.asList(
-                Aggregates.match(eq("posicion", posicion)),
-                Aggregates.group("$posicion")
-        )).forEach((Block<Document>) document -> {
+        for (Document document : jugadorCollection.find(eq("posicion", posicion))) {
             Jugador jugador = new Jugador();
-            jugador.setPosicion(document.getString("_id"));
+            jugador.setId(document.getObjectId("_id"));
+            jugador.setNombre(document.getString("nombre"));
+            jugador.setEdad(document.getInteger("edad"));
+            jugador.setPosicion(document.getString("posicion"));
+            jugador.setEquipo(document.getString("equipo"));
             jugadores.add(jugador);
-        });
+        }
 
         return jugadores;
     }
 
-    
+
 
 
 }
