@@ -1,0 +1,12 @@
+{"_id": {"$oid": "640998f9b75a3141c6b83c47"}, "Nombre": "Luka Modric", "Posicion": "Centrocampista", "Equipo": "Real Madrid", "Dorsal": 10, "Edad": 33}
+{"_id": {"$oid": "640998f9b75a3141c6b83c48"}, "Nombre": "Sergio Ramos", "Posicion": "Defensa central", "Equipo": "Real Madrid", "Dorsal": 4, "Edad": 34}
+{"_id": {"$oid": "640998f9b75a3141c6b83c49"}, "Nombre": "Karim Benzema", "Posicion": "Delantero", "Equipo": "Real Madrid", "Dorsal": 9, "Edad": 32}
+{"_id": {"$oid": "640998f9b75a3141c6b83c4a"}, "Nombre": "Toni Kroos", "Posicion": "Centrocampista", "Equipo": "Real Madrid", "Dorsal": 8, "Edad": 30}
+{"_id": {"$oid": "640998f9b75a3141c6b83c4b"}, "Nombre": "Luka Jovic", "Posicion": "Delantero", "Equipo": "Real Madrid", "Dorsal": 18, "Edad": 23}
+{"_id": {"$oid": "640998f9b75a3141c6b83c4c"}, "Nombre": "Cristiano Ronaldo", "Posicion": "Delanero", "Equipo": "Real Madrid", "Dorsal": 24, "Edad": 38}
+{"_id": {"$oid": "640998fdb75a3141c6b83c5d"}, "Nombre": "Luka Modric", "Posicion": "Centrocampista", "Equipo": "Real Madrid", "Dorsal": 10, "Edad": 33}
+{"_id": {"$oid": "640998fdb75a3141c6b83c5e"}, "Nombre": "Sergio Ramos", "Posicion": "Defensa central", "Equipo": "Real Madrid", "Dorsal": 4, "Edad": 34}
+{"_id": {"$oid": "640998fdb75a3141c6b83c5f"}, "Nombre": "Karim Benzema", "Posicion": "Delantero", "Equipo": "Real Madrid", "Dorsal": 9, "Edad": 32}
+{"_id": {"$oid": "640998fdb75a3141c6b83c60"}, "Nombre": "Toni Kroos", "Posicion": "Centrocampista", "Equipo": "Real Madrid", "Dorsal": 8, "Edad": 30}
+{"_id": {"$oid": "640998fdb75a3141c6b83c61"}, "Nombre": "Luka Jovic", "Posicion": "Delantero", "Equipo": "Real Madrid", "Dorsal": 18, "Edad": 23}
+{"_id": {"$oid": "640998fdb75a3141c6b83c62"}, "Nombre": "Cristiano Ronaldo", "Posicion": "Delanero", "Equipo": "Real Madrid", "Dorsal": 24, "Edad": 38}
