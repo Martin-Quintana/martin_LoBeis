@@ -16,6 +16,7 @@ public class Main {
             System.out.println("3. Consultar datos");
             System.out.println("4. Actualizar datos");
             System.out.println("5 Agrupar datos");
+            System.out.println("6. Exportar datos a JSON");
             System.out.println("0. Salir");
             System.out.println("Elige una opcion: ");
             opcion = scan.nextInt();
@@ -35,6 +36,9 @@ public class Main {
                     break;
                 case 5:
                     mongoDB.menuAgrupaciones();
+                    break;
+                case 6:
+                    mongoDB.exportarJSON();
                     break;
                 case 0:
                     salir = true;
