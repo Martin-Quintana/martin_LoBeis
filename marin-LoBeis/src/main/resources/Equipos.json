@@ -1,0 +1,49 @@
+{
+  "_id": {
+    "$oid": "640b945c042f8a7fd3f77d29"
+  },
+  "Nombre": "Atletico de Madrid",
+  "Ciudad": "Madrid",
+  "Pais": "España",
+  "Estadio": "Wanda Metropolitano"
+}{
+  "_id": {
+    "$oid": "640b945c042f8a7fd3f77d2a"
+  },
+  "Nombre": "Real Madrid",
+  "Ciudad": "Madrid",
+  "Pais": "España",
+  "Estadio": "Santiago Bernabeu"
+}{
+  "_id": {
+    "$oid": "640b945c042f8a7fd3f77d2b"
+  },
+  "Nombre": "Barcelona",
+  "Ciudad": "Barcelona",
+  "Pais": "España",
+  "Estadio": "Camp Nou"
+}{
+  "_id": {
+    "$oid": "640b945c042f8a7fd3f77d2c"
+  },
+  "Nombre": "Sevilla",
+  "Ciudad": "Sevilla",
+  "Pais": "España",
+  "Estadio": "Ramón Sánchez Pizjuán"
+}{
+  "_id": {
+    "$oid": "640b945c042f8a7fd3f77d2d"
+  },
+  "Nombre": "Valencia",
+  "Ciudad": "Valencia",
+  "Pais": "España",
+  "Estadio": "Mestalla"
+}{
+  "_id": {
+    "$oid": "640b945c042f8a7fd3f77d2e"
+  },
+  "Nombre": "Villarreal",
+  "Ciudad": "Villarreal",
+  "Pais": "España",
+  "Estadio": "Estadio de la Cerámica"
+}

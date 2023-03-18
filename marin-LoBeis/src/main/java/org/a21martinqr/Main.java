@@ -39,6 +39,8 @@ public class Main {
                     break;
                 case 6:
                     mongoDB.exportarJSON();
+                    mongoDB.exportarJSON1();
+                    mongoDB.exportarJSON2();
                     break;
                 case 0:
                     salir = true;

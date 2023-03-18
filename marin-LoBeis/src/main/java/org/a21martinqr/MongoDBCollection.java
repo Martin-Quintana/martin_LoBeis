@@ -462,20 +462,54 @@ public class MongoDBCollection {
     }
 
     public void exportarJSON() {
+        MongoCollection<Document> collection = database.getCollection("Jugadores");
         try {
-            System.out.println("Exportar JSON");
-            //Select * from Jugadores
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("src/main/resources/jugadores.json")));
-            database.getCollection("Jugadores").find().forEach((Block<? super Document>) document -> {
-                System.out.println(document.toJson());
+            // Exportar la coleccion a un fichero JSON
+            collection.find().forEach((Block<Document>) document -> {
                 try {
-                    bw.write(document.toJson());
-                    bw.newLine();
+                    FileWriter file = new FileWriter("src/main/resources/" + "Jugadores" + ".json", true);
+                    file.write(document.toJson());
+                    file.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
-            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void exportarJSON1() {
+        MongoCollection<Document> collection = database.getCollection("Equipos");
+        try {
+            // Exportar la coleccion a un fichero JSON
+            collection.find().forEach((Block<Document>) document -> {
+                try {
+                    FileWriter file = new FileWriter("src/main/resources/" + "Equipos" + ".json", true);
+                    file.write(document.toJson());
+                    file.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void exportarJSON2() {
+        MongoCollection<Document> collection = database.getCollection("Estadios");
+        try {
+            // Exportar la coleccion a un fichero JSON
+            collection.find().forEach((Block<Document>) document -> {
+                try {
+                    FileWriter file = new FileWriter("src/main/resources/" + "Estadios" + ".json", true);
+                    file.write(document.toJson());
+                    file.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
